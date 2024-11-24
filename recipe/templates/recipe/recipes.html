@@ -1,7 +1,5 @@
 {% extends "recipe/base.html" %}
 {% block content %}
- 
-
 <div class="container mt-5">
 
     <!-- Search Form -->
@@ -45,13 +43,11 @@
                 {% for recipe in recipes %}
                     <div class="col-md-4">
                         <div class="card mb-4 shadow-sm">
-                            <img src="{{ recipe.recipe_image.url }}" class="card-img-top" alt="{{ recipe.recipe_name }}">
+                            <img src="{{ recipe.recipe_image.url }}" alt="Recipe Image" class="img-fluid" style="max-width: 200px;"><br>
                             <div class="card-body">
                                 <h5 class="card-title">{{ recipe.recipe_name }}</h5>
-                                <a href ="{% url 'update_recipe' recipe.id%}" class = "btn btn-success">Edite Recipe</a> 
-                                <a href ="{% url 'update_recipe' recipe.id%}"><i class="bi bi-pencil-square"></i></a> 
-                                
-                                <a href ="{% url 'delete_recipe' recipe.id%}" class = "btn btn-danger">Delete Recipe</a> 
+                                <a href ="{% url 'recipe:update_recipe' recipe.id%}" class = "btn btn-success">Edite Recipe</a>  
+                                <a href ="{% url 'recipe:delete_recipe' recipe.id%}" class = "btn btn-danger">Delete Recipe</a> 
                                 <p class="card-text">{{ recipe.recipe_description }}</p>
                             </div>
                         </div>

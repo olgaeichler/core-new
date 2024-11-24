@@ -18,7 +18,7 @@ def recipes(request):
             recipe_name=recipe_name,
             recipe_description=recipe_description,
         )
-        return redirect('/')
+        return redirect('recipe:recipe_list')
 
     queryset = Recipe.objects.all()
 
@@ -32,7 +32,7 @@ def recipes(request):
 def delete_recipe(request, id):
     queryset = Recipe.objects.get(id=id)
     queryset.delete()
-    return redirect('/')
+    return redirect('recipe:recipe_list')
 
 def update_recipe(request, id):
     queryset = Recipe.objects.get(id=id)
@@ -50,7 +50,7 @@ def update_recipe(request, id):
             queryset.recipe_image = recipe_image
 
         queryset.save()
-        return redirect('/')
+        return redirect('recipe:recipe_list')
     
     context = {'recipe': queryset}
     return render(request, 'recipe/update_recipe.html', context)
